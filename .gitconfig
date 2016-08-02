@@ -1,0 +1,18 @@
+[user]
+	email = clement0bresson@gmail.com
+	name = Clement-Bresson
+[core]
+	editor = atom
+[push]
+	default = current
+[credential]
+	helper = store
+[alias]
+	br = branch
+	co = checkout
+	fp = fetch -p --all
+	st = status
+	mm = !b=$(git rev-parse --abbrev-ref HEAD) && git push -f && git co master && git fp && git merge $b && git push
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	feature = "!f() { git co -b feature/$(echo \"${@:1}\" | sed -e 's/[^[:alnum:]]/-/g' | tr -s '-'); }; f"
+	hotfix = "!f() { git co -b hotfix/$(echo \"${@:1}\" | sed -e 's/[^[:alnum:]]/-/g' | tr -s '-'); }; f"
